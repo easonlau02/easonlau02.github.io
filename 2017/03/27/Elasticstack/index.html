@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Elasticstack | Eason&#39;s Best Pratice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ELK : elasticsearch + logstash + kibana
+
+Version : 5.0.1 + 5.0.1 + 5.0.1
+Version : 5.1.1 + 5.1.1 + 5.1.1
+Version : 5.x + 5.x + 5.x
+
+Forwarder : filebeat port 5044
+Prerequisite
+OS : Centos 7.x
+Docker e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticstack">
+<meta property="og:url" content="https://easonlau02.github.io/2017/03/27/Elasticstack/index.html">
+<meta property="og:site_name" content="Eason's Best Pratice">
+<meta property="og:description" content="ELK : elasticsearch + logstash + kibana
+
+Version : 5.0.1 + 5.0.1 + 5.0.1
+Version : 5.1.1 + 5.1.1 + 5.1.1
+Version : 5.x + 5.x + 5.x
+
+Forwarder : filebeat port 5044
+Prerequisite
+OS : Centos 7.x
+Docker e">
+<meta property="og:image" content="https://raw.githubusercontent.com/easonlau02/elasticstack/master/kibana_up.png">
+<meta property="og:updated_time" content="2017-03-27T10:19:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elasticstack">
+<meta name="twitter:description" content="ELK : elasticsearch + logstash + kibana
+
+Version : 5.0.1 + 5.0.1 + 5.0.1
+Version : 5.1.1 + 5.1.1 + 5.1.1
+Version : 5.x + 5.x + 5.x
+
+Forwarder : filebeat port 5044
+Prerequisite
+OS : Centos 7.x
+Docker e">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/easonlau02/elasticstack/master/kibana_up.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Eason&#39;s Best Pratice" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Eason&#39;s Best Pratice</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://easonlau02.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Elasticstack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/27/Elasticstack/" class="article-date">
+  <time datetime="2017-03-27T10:18:10.000Z" itemprop="datePublished">2017-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Elasticstack
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ELK : elasticsearch + logstash + kibana</p>
+<ul>
+<li>Version : 5.0.1 + 5.0.1 + 5.0.1</li>
+<li>Version : 5.1.1 + 5.1.1 + 5.1.1</li>
+<li>Version : 5.x + 5.x + 5.x</li>
+</ul>
+<p>Forwarder : filebeat port 5044</p>
+<h3 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h3><ul>
+<li>OS : Centos 7.x</li>
+<li>Docker engine &gt; 1.12.x</li>
+<li>Docker-compose &gt; 1.11.x</li>
+</ul>
+<h3 id="Clone-GIT-folder-under-your-user-home"><a href="#Clone-GIT-folder-under-your-user-home" class="headerlink" title="Clone GIT folder under your user home"></a>Clone GIT folder under your user home</h3><pre><code>cd ~
+git clone https://github.com/easonlau02/elasticstack.git
+</code></pre><h2 id="All-3-components-ELK-in-one-machine"><a href="#All-3-components-ELK-in-one-machine" class="headerlink" title="All 3 components(ELK) in one machine"></a>All 3 components(ELK) in one machine</h2><h4 id="Change-below-elasticstack-env-file-only"><a href="#Change-below-elasticstack-env-file-only" class="headerlink" title="Change below ~/elasticstack/.env file only"></a>Change below <code>~/elasticstack/.env</code> file only</h4><pre><code># ~/elasticstack/.env
+
+# environment propertiese, for distinguishing
+environment=prod
+
+# elascticsearch-image, change data path in host machine, default as /use/data/
+E_LOCAL_DATA_PATH=/usr/data/
+
+# logstash-image
+## If docker-compose file set network_mode as host, can access elasticsearch via localhost. For 3 components are in one machine, need to set as localhost
+L_ELASTICSEARCH_HOST_ENV=localhost
+
+# kibana-image
+## If docker-compose file set network_mode as host, can access elasticsearch via localhost ip. For 3 components are in one machine, need to set as localhost ip : 127.0.0.1 or 0.0.0.0
+K_ELASTICSEARCH_HOST_IP=127.0.0.1
+</code></pre><h4 id="For-docker-compose-file-elasticstack-docker-compose-yml-no-need-chnage-generally-You-can-see-some-field-you-config-at-above-env-file-will-pass-into-container-via-docker-compose-file"><a href="#For-docker-compose-file-elasticstack-docker-compose-yml-no-need-chnage-generally-You-can-see-some-field-you-config-at-above-env-file-will-pass-into-container-via-docker-compose-file" class="headerlink" title="For docker-compose file ~/elasticstack/docker-compose.yml, no need chnage generally. You can see some field you config at above .env file will pass into container via docker-compose file."></a>For docker-compose file <code>~/elasticstack/docker-compose.yml</code>, no need chnage generally. You can see some field you config at above .env file will pass into container via docker-compose file.</h4><pre><code>version: &apos;2&apos;
+services:
+  elasticsearch:
+    ...
+    environment:
+      - env=${environment}
+    volumes:
+      ...
+      - ${E_LOCAL_DATA_PATH}:/usr/share/elasticsearch/data
+      ...
+    ...
+  logstash:
+    image: eason02/logstash:5.0.1
+    ...
+    environment:
+      - env=${environment}
+      ...
+    ...
+  kibana:
+    ...
+    environment:
+      - env=${environment}
+    extra_hosts:
+      - &quot;elasticsearchHost:*${K_ELASTICSEARCH_HOST_IP}*&quot;
+    ...
+</code></pre><h4 id="Startup-ELK-service-at-one-machine"><a href="#Startup-ELK-service-at-one-machine" class="headerlink" title="Startup ELK service at one machine"></a>Startup ELK service at one machine</h4><pre><code>cd ~/elaasticstack
+docker-compose up -d
+</code></pre><h2 id="Not-all-3-in-one-machine"><a href="#Not-all-3-in-one-machine" class="headerlink" title="Not all 3 in one machine"></a>Not all 3 in one machine</h2><h4 id="Three-env-you-might-change-But-will-simpler-than-before"><a href="#Three-env-you-might-change-But-will-simpler-than-before" class="headerlink" title="Three .env you might change. But will simpler than before"></a>Three .env you might change. But will simpler than before</h4><p><code>~/elasticstack/elasticsearch/.env</code></p>
+<pre><code># ~/elasticstack/elasticsearch/.env
+
+# environment propertiese, for distinguishing
+environment=prod
+
+# elascticsearch-image, change data path in host machine, default as /use/data/
+E_LOCAL_DATA_PATH=/usr/data/
+</code></pre><p><code>~/elasticstack/logstash/.env</code></p>
+<pre><code># ~/elasticstack/logstash/.env
+
+# environment propertiese, for distinguishing
+environment=prod
+
+# logstash-image
+## Specify elasticsearch host, if the same machine, set it as localhost, if not, set specific host name. To make sure no firewall to access elasticsearch:9200
+L_ELASTICSEARCH_HOST_ENV=localhost
+</code></pre><p><code>~/elasticstack/kibna/.env</code></p>
+<pre><code># ~/elasticstack/kibana/.env
+
+# environment propertiese, for distinguishing
+environment=prod
+
+# for kibana-image
+## Specify elasticsearch host, if the same machine, set it as 127.0.0.0 or 0.0.0.0, if not, set specific host IP. To make sure no firewall to access elasticsearchIP:9200
+K_ELASTICSEARCH_HOST_IP=127.0.0.1
+</code></pre><h4 id="For-docker-compose-every-component-will-hold-one-in-order-to-start-it-single-at-one-machine"><a href="#For-docker-compose-every-component-will-hold-one-in-order-to-start-it-single-at-one-machine" class="headerlink" title="For docker-compose, every component will hold one, in order to start it single at one machine."></a>For docker-compose, every component will hold one, in order to start it single at one machine.</h4><ul>
+<li><a href="https://github.com/easonlau02/elasticstack/blob/master/elasticsearch/docker-compose.yml" target="_blank" rel="external"><code>~/elasticstack/elascticsearch/docker-compose.yml</code></a></li>
+<li><a href="https://github.com/easonlau02/elasticstack/blob/master/logstash/docker-compose.yml" target="_blank" rel="external"><code>~/elasticstack/logstash/docker-compose.yml</code></a></li>
+<li><p><a href="https://github.com/easonlau02/elasticstack/blob/master/kibana/docker-compose.yml" target="_blank" rel="external"><code>~/elasticstack/kibana/docker-compose.yml</code></a></p>
+<h4 id="Startup-ELK-service-at-corresponding-machine-respectively"><a href="#Startup-ELK-service-at-corresponding-machine-respectively" class="headerlink" title="Startup ELK service at corresponding machine respectively."></a>Startup ELK service at corresponding machine respectively.</h4><p><strong>Elasticsearch at host1</strong>:</p>
+<p>  cd ~/elasticstack/elasticsearch<br>  docker-compose up -d</p>
+</li>
+</ul>
+<p><strong>Logstash at host2</strong>:</p>
+<pre><code>cd ~/elasticstack/logstash
+docker-compose up -d
+</code></pre><p><strong>Kibana at host3</strong>:</p>
+<pre><code>cd ~/elasticstack/kibana
+docker-compose up -d
+</code></pre><h2 id="Access-kibana-via-lt-kibanahost-gt-5601-you-can-see-below-screenshot"><a href="#Access-kibana-via-lt-kibanahost-gt-5601-you-can-see-below-screenshot" class="headerlink" title="Access kibana via &lt;kibanahost&gt;:5601, you can see below screenshot"></a>Access kibana via <code>&lt;kibanahost&gt;:5601</code>, you can see below screenshot</h2><p><img src="https://raw.githubusercontent.com/easonlau02/elasticstack/master/kibana_up.png" alt="alt text" title="kibana_up"></p>
+<p>You can see <strong>Unable to fetch mapping. Do you have indices match…</strong>, caused by no log feed.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://easonlau02.github.io/2017/03/27/Elasticstack/" data-id="cj0ryp08c0000jkj5x7b1k3lg" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-compose/">docker-compose</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kibana/">kibana</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logstash/">logstash</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker-compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kibana/">kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 10px;">docker-compose</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/kibana/" style="font-size: 10px;">kibana</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/27/Elasticstack/">Elasticstack</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Eason Lau<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
