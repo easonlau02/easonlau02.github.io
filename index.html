@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://easonlau02.github.io"></form>
@@ -97,7 +97,8 @@
 </ul>
 <h3 id="Clone-GIT-folder-under-your-user-home"><a href="#Clone-GIT-folder-under-your-user-home" class="headerlink" title="Clone GIT folder under your user home"></a>Clone GIT folder under your user home</h3><pre><code>cd ~
 git clone https://github.com/easonlau02/elasticstack.git
-</code></pre><h2 id="All-3-components-ELK-in-one-machine"><a href="#All-3-components-ELK-in-one-machine" class="headerlink" title="All 3 components(ELK) in one machine"></a>All 3 components(ELK) in one machine</h2><h4 id="Change-below-elasticstack-env-file-only"><a href="#Change-below-elasticstack-env-file-only" class="headerlink" title="Change below ~/elasticstack/.env file only"></a>Change below <code>~/elasticstack/.env</code> file only</h4><pre><code># ~/elasticstack/.env
+</code></pre><h2 id="All-3-components-ELK-in-one-machine"><a href="#All-3-components-ELK-in-one-machine" class="headerlink" title="All 3 components(ELK) in one machine"></a>All 3 components(ELK) in one machine</h2><hr>
+<h4 id="Change-below-elasticstack-env-file-only"><a href="#Change-below-elasticstack-env-file-only" class="headerlink" title="Change below ~/elasticstack/.env file only"></a>Change below <code>~/elasticstack/.env</code> file only</h4><pre><code># ~/elasticstack/.env
 
 # environment propertiese, for distinguishing
 environment=prod
@@ -139,7 +140,8 @@ services:
     ...
 </code></pre><h4 id="Startup-ELK-service-at-one-machine"><a href="#Startup-ELK-service-at-one-machine" class="headerlink" title="Startup ELK service at one machine"></a>Startup ELK service at one machine</h4><pre><code>cd ~/elaasticstack
 docker-compose up -d
-</code></pre><h2 id="Not-all-3-in-one-machine"><a href="#Not-all-3-in-one-machine" class="headerlink" title="Not all 3 in one machine"></a>Not all 3 in one machine</h2><h4 id="Three-env-you-might-change-But-will-simpler-than-before"><a href="#Three-env-you-might-change-But-will-simpler-than-before" class="headerlink" title="Three .env you might change. But will simpler than before"></a>Three .env you might change. But will simpler than before</h4><p><code>~/elasticstack/elasticsearch/.env</code></p>
+</code></pre><h2 id="Not-all-3-in-one-machine"><a href="#Not-all-3-in-one-machine" class="headerlink" title="Not all 3 in one machine"></a>Not all 3 in one machine</h2><hr>
+<h4 id="Three-env-you-might-change-But-will-simpler-than-before"><a href="#Three-env-you-might-change-But-will-simpler-than-before" class="headerlink" title="Three .env you might change. But will simpler than before"></a>Three .env you might change. But will simpler than before</h4><p><code>~/elasticstack/elasticsearch/.env</code></p>
 <pre><code># ~/elasticstack/elasticsearch/.env
 
 # environment propertiese, for distinguishing
@@ -168,24 +170,25 @@ K_ELASTICSEARCH_HOST_IP=127.0.0.1
 </code></pre><h4 id="For-docker-compose-every-component-will-hold-one-in-order-to-start-it-single-at-one-machine"><a href="#For-docker-compose-every-component-will-hold-one-in-order-to-start-it-single-at-one-machine" class="headerlink" title="For docker-compose, every component will hold one, in order to start it single at one machine."></a>For docker-compose, every component will hold one, in order to start it single at one machine.</h4><ul>
 <li><a href="https://github.com/easonlau02/elasticstack/blob/master/elasticsearch/docker-compose.yml" target="_blank" rel="external"><code>~/elasticstack/elascticsearch/docker-compose.yml</code></a></li>
 <li><a href="https://github.com/easonlau02/elasticstack/blob/master/logstash/docker-compose.yml" target="_blank" rel="external"><code>~/elasticstack/logstash/docker-compose.yml</code></a></li>
-<li><p><a href="https://github.com/easonlau02/elasticstack/blob/master/kibana/docker-compose.yml" target="_blank" rel="external"><code>~/elasticstack/kibana/docker-compose.yml</code></a></p>
-<h4 id="Startup-ELK-service-at-corresponding-machine-respectively"><a href="#Startup-ELK-service-at-corresponding-machine-respectively" class="headerlink" title="Startup ELK service at corresponding machine respectively."></a>Startup ELK service at corresponding machine respectively.</h4><p><strong>Elasticsearch at host1</strong>:</p>
-<p>  cd ~/elasticstack/elasticsearch<br>  docker-compose up -d</p>
-</li>
+<li><a href="https://github.com/easonlau02/elasticstack/blob/master/kibana/docker-compose.yml" target="_blank" rel="external"><code>~/elasticstack/kibana/docker-compose.yml</code></a></li>
 </ul>
-<p><strong>Logstash at host2</strong>:</p>
+<h4 id="Startup-ELK-service-at-corresponding-machine-respectively"><a href="#Startup-ELK-service-at-corresponding-machine-respectively" class="headerlink" title="Startup ELK service at corresponding machine respectively."></a>Startup ELK service at corresponding machine respectively.</h4><p><strong>Elasticsearch at host1</strong>:</p>
+<pre><code>cd ~/elasticstack/elasticsearch
+docker-compose up -d
+</code></pre><p><strong>Logstash at host2</strong>:</p>
 <pre><code>cd ~/elasticstack/logstash
 docker-compose up -d
 </code></pre><p><strong>Kibana at host3</strong>:</p>
 <pre><code>cd ~/elasticstack/kibana
 docker-compose up -d
-</code></pre><h2 id="Access-kibana-via-lt-kibanahost-gt-5601-you-can-see-below-screenshot"><a href="#Access-kibana-via-lt-kibanahost-gt-5601-you-can-see-below-screenshot" class="headerlink" title="Access kibana via &lt;kibanahost&gt;:5601, you can see below screenshot"></a>Access kibana via <code>&lt;kibanahost&gt;:5601</code>, you can see below screenshot</h2><p><img src="https://raw.githubusercontent.com/easonlau02/elasticstack/master/kibana_up.png" alt="alt text" title="kibana_up"></p>
+</code></pre><h2 id="Access-kibana-via-lt-kibanahost-gt-5601-you-can-see-below-screenshot"><a href="#Access-kibana-via-lt-kibanahost-gt-5601-you-can-see-below-screenshot" class="headerlink" title="Access kibana via &lt;kibanahost&gt;:5601, you can see below screenshot"></a>Access kibana via <code>&lt;kibanahost&gt;:5601</code>, you can see below screenshot</h2><hr>
+<p><img src="https://raw.githubusercontent.com/easonlau02/elasticstack/master/kibana_up.png" alt="" title="kibana_up"></p>
 <p>You can see <strong>Unable to fetch mapping. Do you have indices match…</strong>, caused by no log feed.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://easonlau02.github.io/2017/03/27/Elasticstack/" data-id="cj0ryp08c0000jkj5x7b1k3lg" class="article-share-link">Partager</a>
+      <a data-url="https://easonlau02.github.io/2017/03/27/Elasticstack/" data-id="cj0sto6bl0000isj578jndqbw" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-compose/">docker-compose</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kibana/">kibana</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logstash/">logstash</a></li></ul>
@@ -207,7 +210,7 @@ docker-compose up -d
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker-compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kibana/">kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li></ul>
     </div>
@@ -217,7 +220,7 @@ docker-compose up -d
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 10px;">docker-compose</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/kibana/" style="font-size: 10px;">kibana</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a>
     </div>
@@ -226,7 +229,7 @@ docker-compose up -d
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
@@ -236,7 +239,7 @@ docker-compose up -d
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
@@ -257,7 +260,7 @@ docker-compose up -d
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Eason Lau<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
