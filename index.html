@@ -107,11 +107,16 @@ environment=prod
 E_LOCAL_DATA_PATH=/usr/data/
 
 # logstash-image
-## If docker-compose file set network_mode as host, can access elasticsearch via localhost. For 3 components are in one machine, need to set as localhost
+## If docker-compose file set network_mode as host, 
+## can access elasticsearch via localhost. 
+## For 3 components are in one machine, need to set as localhost
 L_ELASTICSEARCH_HOST_ENV=localhost
 
 # kibana-image
-## If docker-compose file set network_mode as host, can access elasticsearch via localhost ip. For 3 components are in one machine, need to set as localhost ip : 127.0.0.1 or 0.0.0.0
+## If docker-compose file set network_mode as host, 
+## can access elasticsearch via localhost ip. 
+## For 3 components are in one machine, 
+## need to set as localhost ip : 127.0.0.1 or 0.0.0.0
 K_ELASTICSEARCH_HOST_IP=127.0.0.1
 </code></pre><h4 id="For-docker-compose-file-elasticstack-docker-compose-yml-no-need-chnage-generally-You-can-see-some-field-you-config-at-above-env-file-will-pass-into-container-via-docker-compose-file"><a href="#For-docker-compose-file-elasticstack-docker-compose-yml-no-need-chnage-generally-You-can-see-some-field-you-config-at-above-env-file-will-pass-into-container-via-docker-compose-file" class="headerlink" title="For docker-compose file ~/elasticstack/docker-compose.yml, no need chnage generally. You can see some field you config at above .env file will pass into container via docker-compose file."></a>For docker-compose file <code>~/elasticstack/docker-compose.yml</code>, no need chnage generally. You can see some field you config at above .env file will pass into container via docker-compose file.</h4><pre><code>version: &apos;2&apos;
 services:
@@ -156,7 +161,10 @@ E_LOCAL_DATA_PATH=/usr/data/
 environment=prod
 
 # logstash-image
-## Specify elasticsearch host, if the same machine, set it as localhost, if not, set specific host name. To make sure no firewall to access elasticsearch:9200
+## Specify elasticsearch host, 
+## if the same machine, set it as localhost, 
+## if not, set specific host name. 
+## To make sure no firewall to access elasticsearch:9200
 L_ELASTICSEARCH_HOST_ENV=localhost
 </code></pre><p><code>~/elasticstack/kibna/.env</code></p>
 <pre><code># ~/elasticstack/kibana/.env
@@ -165,7 +173,10 @@ L_ELASTICSEARCH_HOST_ENV=localhost
 environment=prod
 
 # for kibana-image
-## Specify elasticsearch host, if the same machine, set it as 127.0.0.0 or 0.0.0.0, if not, set specific host IP. To make sure no firewall to access elasticsearchIP:9200
+## Specify elasticsearch host, 
+## if the same machine, set it as 127.0.0.0 or 0.0.0.0, 
+## if not, set specific host IP. 
+## To make sure no firewall to access elasticsearchIP:9200
 K_ELASTICSEARCH_HOST_IP=127.0.0.1
 </code></pre><h4 id="For-docker-compose-every-component-will-hold-one-in-order-to-start-it-single-at-one-machine"><a href="#For-docker-compose-every-component-will-hold-one-in-order-to-start-it-single-at-one-machine" class="headerlink" title="For docker-compose, every component will hold one, in order to start it single at one machine."></a>For docker-compose, every component will hold one, in order to start it single at one machine.</h4><ul>
 <li><a href="https://github.com/easonlau02/elasticstack/blob/master/elasticsearch/docker-compose.yml" target="_blank" rel="external"><code>~/elasticstack/elascticsearch/docker-compose.yml</code></a></li>
